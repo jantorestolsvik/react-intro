@@ -101,11 +101,11 @@ let TodoApp = React.createClass({
                     key={todo.id}
                     todo={todo}
                     editing={this.state.editing === todo.id}
-                    //onToggle={this.toggle.bind(this, todo)}
-                    //onDestroy={this.destroy.bind(this, todo)}
-                    //onEdit={this.edit.bind(this, todo)}
-                    //onSave={this.save.bind(this, todo)}
-                    //onCancel={this.cancel}
+                    onToggle={this.toggle.bind(this, todo)}
+                    onDestroy={this.destroy.bind(this, todo)}
+                    onEdit={this.edit.bind(this, todo)}
+                    onSave={this.save.bind(this, todo)}
+                    onCancel={this.cancel}
                 />
             );
         });
@@ -124,21 +124,21 @@ let TodoApp = React.createClass({
                     count={activeTodoCount}
                     completedCount={completedCount}
                     nowShowing={this.state.nowShowing}
-                    //onClearCompleted={this.clearCompleted}
-                    //filterSelected={this.filterSelected}
+                    onClearCompleted={this.clearCompleted}
+                    filterSelected={this.filterSelected}
                 />;
         }
 
         return (
             <div>
                 <Header
-                    //onNewTodo={this.handleNewTodo}
+                    onNewTodo={this.handleNewTodo}
                 />
                 <section className="main">
                     <input
                         className="toggle-all"
                         type="checkbox"
-                        //onChange={this.toggleAll}
+                        onChange={this.toggleAll}
                         checked={activeTodoCount === 0}
                     />
                     <ul className="todo-list">
@@ -176,8 +176,8 @@ let Header = React.createClass({
                     className="new-todo"
                     placeholder="What needs to be done?"
                     value={this.state.text}
-                    //onKeyDown={this.handleKeyDown}
-                    //onChange={this.handleChange}
+                    onKeyDown={this.handleKeyDown}
+                    onChange={this.handleChange}
                 />
             </header>
         );
@@ -239,24 +239,24 @@ let TodoItem = React.createClass({
                         className="toggle"
                         type="checkbox"
                         checked={this.props.todo.completed}
-                        //onChange={this.props.onToggle}
+                        onChange={this.props.onToggle}
                     />
                     <label
-                        //onDoubleClick={this.handleEdit}
+                        onDoubleClick={this.handleEdit}
                     >
                         {this.props.todo.title}
                     </label>
                     <button
                         className="destroy"
-                        //onClick={this.props.onDestroy}
+                        onClick={this.props.onDestroy}
                     />
                 </div>
                 <input
                     className="edit"
                     value={this.state.editText}
-                    //onBlur={this.handleSubmit}
-                    //onChange={this.handleChange}
-                    //onKeyDown={this.handleKeyDown}
+                    onBlur={this.handleSubmit}
+                    onChange={this.handleChange}
+                    onKeyDown={this.handleKeyDown}
                     ref={(ref) => {this.input = ref}}
                 />
             </li>
@@ -273,7 +273,7 @@ let Footer = React.createClass({
             clearButton = (
                 <button
                     className="clear-completed"
-                    //onClick={this.props.onClearCompleted}
+                    onClick={this.props.onClearCompleted}
                 >
                     Clear completed
                 </button>
@@ -289,7 +289,7 @@ let Footer = React.createClass({
                     <li>
                         <a
                             href="#"
-                            //onClick={() => {this.props.filterSelected(ALL_TODOS)}}
+                            onClick={() => {this.props.filterSelected(ALL_TODOS)}}
                             className={nowShowing === ALL_TODOS ? "selected" : ""}>
                             All
                         </a>
@@ -298,7 +298,7 @@ let Footer = React.createClass({
                     <li>
                         <a
                             href="#"
-                            //onClick={() => {this.props.filterSelected(ACTIVE_TODOS)}}
+                            onClick={() => {this.props.filterSelected(ACTIVE_TODOS)}}
                             className={nowShowing === ACTIVE_TODOS ? "selected" : ""}>
                             Active
                         </a>
@@ -307,7 +307,7 @@ let Footer = React.createClass({
                     <li>
                         <a
                             href="#"
-                            //onClick={() => {this.props.filterSelected(COMPLETED_TODOS)}}
+                            onClick={() => {this.props.filterSelected(COMPLETED_TODOS)}}
                             className={nowShowing === COMPLETED_TODOS ? "selected" : ""}>
                             Completed
                         </a>
